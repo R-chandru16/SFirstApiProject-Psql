@@ -1,0 +1,35 @@
+Postrgresql 
+
+Download Postgres sql-> and when download IT will install 
+Postgresql Server
+pgadmin4 GUI
+Stack builder
+commmand Line Tool
+
+
+NuGet packages
+microsoft.EntityFrameworkCore
+npgsql.EntityFrameWorkcore.PostgreSql
+Microsoft.EntityFrameworkCore.Design
+Microsoft.EntityFrameworkCore.Tools
+
+
+
+In Startup.cs
+
+  public void ConfigureServices(IServiceCollection services)
+  {
+
+      services.AddControllers();
+      services.AddSwaggerGen(c =>
+      {
+          c.SwaggerDoc("v1", new OpenApiInfo { Title = "SFirstApplicationApi", Version = "v1" });
+      });
+
+only Changes:
+
+      services.AddDbContext<CompanyContext>(options =>
+      {
+          options.UseNpgsql(Configuration["ConnectionStrings:DefaultConnection"]);
+      });
+     
